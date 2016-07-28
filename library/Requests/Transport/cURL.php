@@ -255,7 +255,9 @@ class Requests_Transport_cURL implements Requests_Transport {
 		curl_setopt($this->fp, CURLOPT_CONNECTTIMEOUT, $options['timeout']);
 		curl_setopt($this->fp, CURLOPT_REFERER, $url);
 		curl_setopt($this->fp, CURLOPT_USERAGENT, $options['useragent']);
-		curl_setopt($this->fp, CURLOPT_HTTPHEADER, $headers);
+		if ($headers) {
+			curl_setopt($this->fp, CURLOPT_HTTPHEADER, $headers);
+		}
 
 		if (true === $options['blocking']) {
 			curl_setopt($this->fp, CURLOPT_HEADERFUNCTION, array(&$this, 'stream_headers'));
