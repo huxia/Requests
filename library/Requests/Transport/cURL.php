@@ -255,7 +255,7 @@ class Requests_Transport_cURL implements Requests_Transport {
 		curl_setopt($this->fp, CURLOPT_CONNECTTIMEOUT, $options['timeout']);
 		curl_setopt($this->fp, CURLOPT_REFERER, $url);
 		curl_setopt($this->fp, CURLOPT_USERAGENT, $options['useragent']);
-		if ($headers) {
+		if (!empty($headers)) {
 			curl_setopt($this->fp, CURLOPT_HTTPHEADER, $headers);
 		}
 
